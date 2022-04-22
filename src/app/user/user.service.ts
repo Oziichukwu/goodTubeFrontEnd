@@ -7,9 +7,28 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  constructor(private HttpClient: HttpClient) { }
+  private userId:string = '';
+
+
+  constructor(private httpClient: HttpClient) { }
 
   subscribeToUser(userId:string) : Observable<boolean>{
-    return this.HttpClient.post<boolean>("http://localhost:8080/api/user/subscribe/" + userId, null);
+    return this.httpClient.post<boolean>("http://localhost:8080/api/user/subscribe/" + userId, null);
+  }
+
+  unSubscribeToUser(userId:string) : Observable<boolean>{
+    return this.httpClient.post<boolean>("http://localhost:8080/api/user/unSubscribe/" + userId, null);
+  }
+
+
+  registerUser() {
+    this.httpClient.get("http://localhost:8080/api/user/register", {responseType:"text"})
+    .subscribe(data => {
+      this.userId = data;
+    })
+  }
+
+  getUserId(): string {
+    return this.userId;
   }
 }
