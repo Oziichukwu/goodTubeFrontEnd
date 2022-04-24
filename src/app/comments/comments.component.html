@@ -1,7 +1,7 @@
 <form class="example-form" [formGroup]="commentsForm">
   <mat-form-field class="example-full-width">
     <mat-label>Leave a comment</mat-label>
-    <textarea matInput (focus)="this.showCommentButton()" [mat-autosize]="true"
+    <textarea matInput (focus)="this.showCommentButton()" mat-autosize="true"
               [formControlName]="'comment'" placeholder="Share your thoughts"></textarea>
   </mat-form-field>
   <div fxLayout="row" *ngIf="showCommentSection">
@@ -17,12 +17,12 @@
   </div>
 </form>
 <mat-divider></mat-divider>
-<div class="view-comments" *ngFor="let comment of comments">
+<div class="view-comments" *ngFor="let comment of commentDto">
   <div fxLayout="row">
     <div fxFlex="50%">
       <mat-card-header>
         <div matCardAvatar class="example-header-image"></div>
-        <a matCardTitle class="comment-author" routerLink="">{{comment.commentAuthor}}</a>
+        <a matCardTitle class="comment-author" routerLink="">User</a>
         <p matCardSubtitle>1 Month Ago</p>
       </mat-card-header>
     </div>
