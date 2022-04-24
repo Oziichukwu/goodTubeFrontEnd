@@ -22,8 +22,7 @@ export class UserService {
 
 
   registerUser() {
-    this.httpClient.get("http://localhost:8080/api/user/register", {responseType:"text"})
-    .subscribe(data => {
+    this.httpClient.get("http://localhost:8080/api/user/register", {responseType:"text"}).subscribe(data => {
       this.userId = data;
     })
   }
